@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Demo Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f7f7f7;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            padding: 8px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        input, select {
+            padding: 6px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Interactive Demo</h1>
+
+    <section id="counter-section">
+        <h2>Counter</h2>
+        <p>Current value: <span id="counter-value">0</span></p>
+        <button id="increment-btn">Increment</button>
+        <button id="decrement-btn">Decrement</button>
+    </section>
+
+    <section id="color-section">
+        <h2>Background Color Changer</h2>
+        <label for="bg-color">Choose color:</label>
+        <input type="color" id="bg-color" value="#ffffff">
+        <button id="apply-color-btn">Apply</button>
+    </section>
+
+    <section id="greeting-section">
+        <h2>Personalized Greeting</h2>
+        <label for="name-input">Your name:</label>
+        <input type="text" id="name-input" placeholder="Enter name">
+        <button id="greet-btn">Greet me</button>
+        <p id="greeting-output"></p>
+    </section>
+
+    <script>
+        // counter logic
+        let count = 0;
+        const counterValueEl = document.getElementById('counter-value');
+        document.getElementById('increment-btn').addEventListener('click', () => {
+            count += 1;
+            counterValueEl.textContent = count;
+        });
+        document.getElementById('decrement-btn').addEventListener('click', () => {
+            count -= 1;
+            counterValueEl.textContent = count;
+        });
+
+        // background color changer
+        document.getElementById('apply-color-btn').addEventListener('click', () => {
+            const color = document.getElementById('bg-color').value;
+            document.body.style.backgroundColor = color;
+        });
+
+        // greeting logic
+        document.getElementById('greet-btn').addEventListener('click', () => {
+            const name = document.getElementById('name-input').value.trim();
+            const output = document.getElementById('greeting-output');
+            if (name) {
+                output.textContent = `Hello, ${name}! Nice to meet you.`;
+            } else {
+                output.textContent = 'Please enter a name above.';
+            }
+        });
+    </script>
+</body>
+</html>
